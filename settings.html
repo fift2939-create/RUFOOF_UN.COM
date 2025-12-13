@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رفوف | لوحة التحكم</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: var(--bg-primary);
+        }
+
+        .admin-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .login-box,
+        .settings-box {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .settings-box {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .admin-logo {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .admin-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .error-message {
+            color: #ff4757;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-container" id="login-container">
+        <div class="login-box">
+            <div class="admin-header">
+                <div class="admin-logo">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h2 class="admin-title">تسجيل دخول المشرف</h2>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" class="form-control" placeholder="أدخل اسم المستخدم" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" class="form-control" placeholder="أدخل كلمة المرور" required>
+                </div>
+                <div class="error-message" id="login-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    بيانات الدخول غير صحيحة
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-sign-in-alt"></i>
+                    دخول
+                </button>
+            </form>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-right"></i>
+                العودة للرئيسية
+            </a>
+        </div>
+    </div>
+
+    <!-- Settings Container (Previously in index.html, modified for standalone page) -->
+    <div class="container" id="settings-container" style="display: none;">
+        <div class="settings-box" style="display: block; max-width: 600px; margin: 50px auto;">
+            <div class="admin-header">
+                <div class="admin-logo" style="font-size: 2rem;">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h2 class="admin-title">إعدادات Google Drive</h2>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="settings-box" style="display: block; margin-bottom: 30px; animation-delay: 0.1s;">
+                <div class="admin-header" style="margin-bottom: 20px;">
+                    <div class="admin-logo" style="font-size: 1.5rem;">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3 class="admin-title">رفع ملف جديد</h3>
+                </div>
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label for="upload-category">القسم</label>
+                        <select id="upload-category" class="form-control" required>
+                            <option value="novels">الروايات</option>
+                            <option value="stories">القصص</option>
+                            <option value="initiatives">المبادرات</option>
+                            <option value="jobs">الوظائف</option>
+                            <option value="partners">الشركاء</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="file-input">اختر الملف (يفضل PDF أو صور)</label>
+                        <input type="file" id="file-input" class="form-control" required>
+                    </div>
+                    <div id="upload-status"
+                        style="display: none; margin-bottom: 15px; text-align: center; color: var(--text-secondary);">
+                        <i class="fas fa-spinner fa-spin"></i> جاري الرفع... يرجى الانتظار
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-upload"></i>
+                        رفع الملف
+                    </button>
+                </form>
+            </div>
+
+            <div class="settings-body">
+                <div class="form-group">
+                    <label for="api-key">
+                        <i class="fas fa-key"></i>
+                        مفتاح API
+                    </label>
+                    <input type="text" id="api-key" class="form-control" placeholder="أدخل مفتاح Google API">
+                </div>
+                <div class="form-group">
+                    <label for="novels-folder">
+                        <i class="fas fa-book"></i>
+                        معرف مجلد الروايات
+                    </label>
+                    <input type="text" id="novels-folder" class="form-control" placeholder="Folder ID">
+                </div>
+                <div class="form-group">
+                    <label for="stories-folder">
+                        <i class="fas fa-feather-alt"></i>
+                        معرف مجلد القصص
+                    </label>
+                    <input type="text" id="stories-folder" class="form-control" placeholder="Folder ID">
+                </div>
+                <div class="form-group">
+                    <label for="initiatives-folder">
+                        <i class="fas fa-rocket"></i>
+                        معرف مجلد المبادرات
+                    </label>
+                    <input type="text" id="initiatives-folder" class="form-control" placeholder="Folder ID">
+                </div>
+                <div class="form-group">
+                    <label for="jobs-folder">
+                        <i class="fas fa-briefcase"></i>
+                        معرف مجلد الوظائف
+                    </label>
+                    <input type="text" id="jobs-folder" class="form-control" placeholder="Folder ID">
+                </div>
+                <div class="form-group">
+                    <label for="partners-folder">
+                        <i class="fas fa-handshake"></i>
+                        معرف مجلد الشركاء
+                    </label>
+                    <input type="text" id="partners-folder" class="form-control" placeholder="Folder ID">
+                </div>
+                <button class="btn btn-primary btn-full" id="save-settings">
+                    <i class="fas fa-save"></i>
+                    حفظ الإعدادات
+                </button>
+                <div style="margin-top: 15px;">
+                    <button class="btn btn-secondary btn-full" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        تسجيل الخروج
+                    </button>
+                </div>
+                <a href="index.html" class="back-link" style="margin-top: 15px; display: block;">
+                    <i class="fas fa-home"></i>
+                    الانتقال للموقع
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
