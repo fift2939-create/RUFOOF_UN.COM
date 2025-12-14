@@ -46,7 +46,9 @@ const ELEMENTS = {
         initiatives: document.getElementById('initiatives-folder'),
         jobs: document.getElementById('jobs-folder'),
         partners: document.getElementById('partners-folder')
-    }
+    },
+    defaultCoverInput: document.getElementById('default-cover'),
+    fileDescriptionInput: document.getElementById('file-description')
 };
 
 // ===========================================
@@ -131,6 +133,7 @@ function loadSettings() {
 
             // Set values
             ELEMENTS.apiKeyInput.value = settings.apiKey || '';
+            ELEMENTS.defaultCoverInput.value = settings.defaultCover || '';
 
             if (settings.folders) {
                 Object.keys(settings.folders).forEach(key => {
@@ -151,6 +154,7 @@ function loadSettings() {
 function saveSettings() {
     const settings = {
         apiKey: ELEMENTS.apiKeyInput.value.trim(),
+        defaultCover: ELEMENTS.defaultCoverInput.value.trim(),
         folders: {}
     };
 
@@ -200,8 +204,8 @@ async function handleUpload(e) {
         return;
     }
 
-    if (file.size > 10 * 1024 * 1024) { // 10MB limit
-        alert('حجم الملف كبير جداً. الحد الأقصى هو 10 ميجابايت');
+    if (file.size > 100 * 1024 * 1024) { // 100MB limit
+        alert('حجم الملف كبير جداً. الحد الأقصى هو 100 ميجابايت');
         return;
     }
 
@@ -215,6 +219,7 @@ async function handleUpload(e) {
             action: 'upload',
             category: category,
             name: file.name,
+            description: ELEMENTS.fileDescriptionInput.value.trim(),
             mimeType: file.type,
             data: base64Data
         };

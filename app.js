@@ -257,9 +257,9 @@ function renderBooks(container, files, section) {
     container.innerHTML = files.map(file => `
         <div class="book-card" data-file-id="${file.id}" data-section="${section}">
             <div class="book-cover">
-                ${file.thumbnailLink
+        ${file.thumbnailLink
             ? `<img src="${file.thumbnailLink}" alt="${file.name}" loading="lazy">`
-            : `<img src="IMG-20251115-WA0002.jpg" alt="${file.name}" loading="lazy" style="object-fit: cover; opacity: 0.9;">`
+            : `<img src="${CONFIG.defaultCover || 'IMG-20251115-WA0002.jpg'}" alt="${file.name}" loading="lazy" style="object-fit: cover; opacity: 0.9;">`
         }
                 <span class="book-badge">${getSectionName(section)}</span>
             </div>
@@ -314,8 +314,8 @@ function renderPartners(container, files) {
         card.addEventListener('click', () => {
             const fileId = card.dataset.fileId;
             const file = state.allBooks.find(f => f.id === fileId);
-            if (file && file.webViewLink) {
-                window.open(file.webViewLink, '_blank');
+            if (file) {
+                openBookModal(file);
             }
         });
     });
@@ -365,12 +365,42 @@ function renderErrorState(container, section) {
  */
 function openBookModal(file) {
     DOM.modalTitle.textContent = file.name.replace(/\.[^/.]+$/, '');
+
+    // Customize for Partners and Initiatives
+    const isVisualItem = ['partners', 'initiatives'].includes(file.section);
+
+    // Content
     DOM.modalInfo.innerHTML = `
-        <span><i class="fas fa-folder"></i> ${file.sectionName}</span> • 
-        <span><i class="fas fa-hdd"></i> ${formatFileSize(file.size)}</span> • 
-        <span><i class="fas fa-calendar"></i> ${formatDate(file.modifiedTime)}</span>
+        ${file.description ? `<div style="margin-bottom: 15px; color: var(--text-primary); line-height: 1.6;">${file.description}</div>` : ''}
+        <div style="font-size: 0.9em; opacity: 0.8; display: ${isVisualItem ? 'none' : 'block'}">
+            <span><i class="fas fa-folder"></i> ${file.sectionName}</span> • 
+            <span><i class="fas fa-hdd"></i> ${formatFileSize(file.size)}</span> • 
+            <span><i class="fas fa-calendar"></i> ${formatDate(file.modifiedTime)}</span>
+        </div>
     `;
-    DOM.modalIcon.innerHTML = `<i class="fas ${getFileIcon(file.mimeType)}"></i>`;
+
+    // Icon/Image
+    if (isVisualItem && (file.thumbnailLink || CONFIG.defaultCover)) {
+        const imgSrc = file.thumbnailLink || CONFIG.defaultCover;
+        DOM.modalIcon.innerHTML = `<img src="${imgSrc}" alt="${file.name}" style="width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius-md);">`;
+        DOM.modalIcon.style.borderRadius = '0'; // Reset border radius for full image
+        DOM.modalIcon.style.background = 'transparent';
+        DOM.modalIcon.style.width = '200px'; // Larger size for image
+        DOM.modalIcon.style.height = '200px';
+    } else {
+        DOM.modalIcon.innerHTML = `<i class="fas ${getFileIcon(file.mimeType)}"></i>`;
+        DOM.modalIcon.style.borderRadius = ''; // content default
+        DOM.modalIcon.style.background = ''; // content default
+        DOM.modalIcon.style.width = ''; // content default
+        DOM.modalIcon.style.height = ''; // content default
+    }
+
+    // Actions (Hide for visual items)
+    const modalActions = document.querySelector('.modal-actions');
+    if (modalActions) {
+        modalActions.style.display = isVisualItem ? 'none' : 'flex';
+    }
+
     DOM.modalView.href = file.webViewLink || '#';
     DOM.modalDownload.href = file.webContentLink || file.webViewLink || '#';
 
@@ -467,6 +497,7 @@ function loadSettings() {
         if (saved) {
             const settings = JSON.parse(saved);
             CONFIG.apiKey = settings.apiKey || CONFIG.apiKey;
+            CONFIG.defaultCover = settings.defaultCover || '';
             CONFIG.folders = {
                 ...CONFIG.folders,
                 ...settings.folders

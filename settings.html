@@ -197,6 +197,11 @@
                         <label for="file-input">اختر الملف (يفضل PDF أو صور)</label>
                         <input type="file" id="file-input" class="form-control" required>
                     </div>
+                    <div class="form-group">
+                        <label for="file-description">وصف الملف / المبادرة (اختياري)</label>
+                        <input type="text" id="file-description" class="form-control"
+                            placeholder="نبذة مختصرة عن الملف أو المبادرة...">
+                    </div>
                     <div id="upload-status"
                         style="display: none; margin-bottom: 15px; text-align: center; color: var(--text-secondary);">
                         <i class="fas fa-spinner fa-spin"></i> جاري الرفع... يرجى الانتظار
@@ -215,6 +220,17 @@
                         مفتاح API
                     </label>
                     <input type="text" id="api-key" class="form-control" placeholder="أدخل مفتاح Google API">
+                </div>
+                <div class="form-group">
+                    <label for="default-cover">
+                        <i class="fas fa-image"></i>
+                        صورة الغلاف الافتراضية (رابط)
+                    </label>
+                    <input type="text" id="default-cover" class="form-control"
+                        placeholder="أدخل رابط الصورة الافتراضية">
+                    <small
+                        style="color: var(--text-secondary); font-size: 0.8em; display: block; margin-top: 5px;">تستخدم
+                        هذه الصورة عند عدم توفر غلاف للكتاب</small>
                 </div>
                 <div class="form-group">
                     <label for="novels-folder">

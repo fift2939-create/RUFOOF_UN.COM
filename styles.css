@@ -10,49 +10,49 @@
     --primary-color: #d47eb8ff;
     --primary-dark: #5a67d8;
     --secondary-color: #764ba2;
-    
+
     /* Accent Colors */
     --accent-gold: #f6ad55;
     --accent-teal: #38b2ac;
     --accent-pink: #ed64a6;
-    
+
     /* Neutral Colors */
     --bg-primary: #0f0f23;
     --bg-secondary: #1a1a2e;
     --bg-tertiary: #16213e;
     --bg-card: rgba(255, 255, 255, 0.05);
     --bg-card-hover: rgba(255, 255, 255, 0.1);
-    
+
     /* Text Colors */
     --text-primary: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.7);
     --text-muted: rgba(255, 255, 255, 0.5);
-    
+
     /* Glass Effect */
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    
+
     /* Shadows */
     --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
     --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
     --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
-    
+
     /* Border Radius */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 30px;
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-    
+
     /* Font */
     --font-family: 'Cairo', sans-serif;
-    
+
     /* Container */
     --container-max: 1400px;
     --container-padding: 20px;
@@ -136,8 +136,17 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.7; }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
 }
 
 /* ===========================================
@@ -239,7 +248,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(237, 100, 166, 0.1) 0%, transparent 40%);
@@ -412,8 +421,15 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 /* Hero Wave */
@@ -689,14 +705,16 @@ body {
     background: var(--bg-card);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    padding: 30px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    gap: 20px;
     text-align: center;
     transition: all var(--transition-normal);
     cursor: pointer;
+    min-height: 220px;
 }
 
 .partner-card:hover {
@@ -1107,7 +1125,7 @@ body {
 .footer {
     position: relative;
     background: var(--bg-tertiary);
-    padding-top: 80px;
+    padding-top: 40px;
 }
 
 .footer-wave {
@@ -1131,8 +1149,8 @@ body {
 .footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
+    gap: 30px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--glass-border);
 }
 
@@ -1220,7 +1238,7 @@ body {
 
 .footer-bottom {
     text-align: center;
-    padding: 25px 0;
+    padding: 15px 0;
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
@@ -1235,32 +1253,32 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    
+
     .hero-text {
         order: 1;
     }
-    
+
     .hero-image {
         order: 0;
         min-height: 250px;
     }
-    
+
     .hero-description {
         margin: 0 auto 30px;
     }
-    
+
     .search-box {
         margin: 0 auto 40px;
     }
-    
+
     .hero-stats {
         justify-content: center;
     }
-    
+
     .categories-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1271,7 +1289,7 @@ body {
     html {
         font-size: 14px;
     }
-    
+
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1286,70 +1304,70 @@ body {
         transition: right var(--transition-normal);
         z-index: 999;
     }
-    
+
     .nav-menu.active {
         right: 0;
     }
-    
+
     .nav-toggle {
         display: block;
         z-index: 1000;
     }
-    
+
     .hero {
         padding: 100px 0 60px;
     }
-    
+
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .floating-books {
         width: 200px;
         height: 200px;
     }
-    
+
     .book {
         width: 70px;
         height: 70px;
         font-size: 1.8rem;
     }
-    
+
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .section-title h2 {
         font-size: 1.8rem;
     }
-    
+
     .books-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    
+
     .footer-brand {
         max-width: 100%;
     }
-    
+
     .social-icons {
         justify-content: center;
     }
-    
+
     .settings-panel {
         width: 100%;
         left: -100%;
     }
-    
+
     .settings-btn,
     .back-to-top {
         left: 15px;
     }
-    
+
     .settings-btn {
         bottom: 80px;
     }
@@ -1360,48 +1378,48 @@ body {
     .hero-title {
         font-size: 2rem;
     }
-    
+
     .hero-stats {
         gap: 20px;
     }
-    
+
     .stat-number {
         font-size: 1.5rem;
     }
-    
+
     .search-box {
         flex-wrap: wrap;
     }
-    
+
     .search-input {
         width: 100%;
         padding: 10px 0;
     }
-    
+
     .search-btn {
         width: 100%;
         margin-top: 10px;
     }
-    
+
     .categories-grid {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
-    
+
     .category-card {
         padding: 20px 10px;
     }
-    
+
     .category-icon {
         width: 50px;
         height: 50px;
         font-size: 1.3rem;
     }
-    
+
     .category-card h3 {
         font-size: 0.85rem;
     }
-    
+
     .modal-actions {
         flex-direction: column;
     }
