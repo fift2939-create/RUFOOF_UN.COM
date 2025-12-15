@@ -618,10 +618,322 @@ function generateVisitorCount() {
 }
 
 // ===========================================
+// Theme & Language Management
+// ===========================================
+
+const TRANSLATIONS = {
+    ar: {
+        nav_home: 'الرئيسية',
+        nav_novels: 'الروايات',
+        nav_stories: 'القصص',
+        nav_initiatives: 'المبادرات',
+        nav_jobs: 'الوظائف',
+        nav_partners: 'الشركاء',
+        logo_name: 'رفوف',
+        hero_subtitle: 'مكتبتك الرقمية',
+        hero_desc: 'اكتشف عالماً من الكتب والروايات والقصص. مكتبة رقمية متكاملة تضم أفضل المحتوى العربي في مكان واحد.',
+        search_placeholder: 'ابحث عن كتاب، رواية، أو قصة...',
+        search_btn: 'بحث',
+        stat_books: 'كتاب',
+        stat_sections: 'أقسام',
+        stat_visitors: 'زائر',
+        novels_subtitle: 'استمتع بقراءة أفضل الروايات العربية والعالمية',
+        stories_subtitle: 'مجموعة منتقاة من القصص القصيرة والطويلة',
+        initiatives_subtitle: 'مبادرات ملهمة من الشباب العربي',
+        jobs_subtitle: 'فرص عمل ووظائف متنوعة',
+        partners_subtitle: 'شركاؤنا في النجاح',
+        btn_view: 'معاينة',
+        btn_download: 'تحميل',
+        footer_desc: 'مكتبتك الرقمية للكتب والروايات والقصص',
+        footer_rights: 'جميع الحقوق محفوظة.',
+        footer_credits: 'إعداد منسقة الوصول: أ. سدره الملا علي | تنفيذ: أ. نبيل الحميد'
+    },
+    en: {
+        nav_home: 'Home',
+        nav_novels: 'Novels',
+        nav_stories: 'Stories',
+        nav_initiatives: 'Initiatives',
+        nav_jobs: 'Jobs',
+        nav_partners: 'Partners',
+        logo_name: 'Rofof',
+        hero_subtitle: 'Your Digital Library',
+        hero_desc: 'Discover a world of books, novels, and stories. A complete digital library gathering the best Arabic content in one place.',
+        search_placeholder: 'Search for a book, novel, or story...',
+        search_btn: 'Search',
+        stat_books: 'Books',
+        stat_sections: 'Sections',
+        stat_visitors: 'Visitors',
+        novels_subtitle: 'Enjoy reading the best Arabic and international novels',
+        stories_subtitle: 'A curated collection of short and long stories',
+        initiatives_subtitle: 'Inspiring initiatives from Arab youth',
+        jobs_subtitle: 'Various job opportunities and careers',
+        partners_subtitle: 'Our partners in success',
+        btn_view: 'Preview',
+        btn_download: 'Download',
+        footer_desc: 'Your digital library for books, novels, and stories',
+        footer_rights: 'All rights reserved.',
+        footer_credits: 'Access Coordinator: Sidra Al-Mulla Ali | Development: Nabil Al-Humaid'
+    },
+    ku: {
+        nav_home: 'Destpêk',
+        nav_novels: 'Roman',
+        nav_stories: 'Çîrok',
+        nav_initiatives: 'Destpêşxerî',
+        nav_jobs: 'Kar',
+        nav_partners: 'Hevkar',
+        logo_name: 'Rofof',
+        hero_subtitle: 'Pirtûkxaneya Te ya Dîjîtal',
+        hero_desc: 'Cîhanek pirtûk, roman û çîrokan kifş bike. Pirtûkxaneyek dîjîtal a bêkêmasî ku naveroka herî baş a Erebî li yek cîh dicivîne.',
+        search_placeholder: 'Li pirtûk, roman an çîrokekê bigere...',
+        search_btn: 'Lêgerîn',
+        stat_books: 'Pirtûk',
+        stat_sections: 'Beş',
+        stat_visitors: 'Ziyaretwan',
+        novels_subtitle: 'Ji xwendina romanên herî baş ên Erebî û cîhanî kêfê bike',
+        stories_subtitle: 'Berhevokek bijartî ya çîrokên kurt û dirêj',
+        initiatives_subtitle: 'Destpêşxeriyên îlhamdêr ji ciwanên Ereb',
+        jobs_subtitle: 'Derfeten kar û pîşeyên cihêreng',
+        partners_subtitle: 'Hevkarên me di serkeftinê de',
+        btn_view: 'Pêşdîtin',
+        btn_download: 'Daxistin',
+        footer_desc: 'Pirtûkxaneya te ya dîjîtal ji bo pirtûk, roman û çîrokan',
+        footer_rights: 'Hemû maf parastî ne.',
+        footer_credits: 'Koordînatora Gihîştinê: Sidra Al-Mulla Ali | Pêşxistin: Nabil Al-Humaid'
+    },
+    fr: {
+        nav_home: 'Accueil',
+        nav_novels: 'Romans',
+        nav_stories: 'Histoires',
+        nav_initiatives: 'Initiatives',
+        nav_jobs: 'Emplois',
+        nav_partners: 'Partenaires',
+        logo_name: 'Rofof',
+        hero_subtitle: 'Votre Bibliothèque Numérique',
+        hero_desc: 'Découvrez un monde de livres, de romans et d\'histoires. Une bibliothèque numérique complète regroupant le meilleur contenu arabe en un seul endroit.',
+        search_placeholder: 'Rechercher un livre, un roman ou une histoire...',
+        search_btn: 'Rechercher',
+        stat_books: 'Livres',
+        stat_sections: 'Sections',
+        stat_visitors: 'Visiteurs',
+        novels_subtitle: 'Profitez de la lecture des meilleurs romans arabes et internationaux',
+        stories_subtitle: 'Une collection organisée d\'histoires courtes et longues',
+        initiatives_subtitle: 'Initiatives inspirantes de la jeunesse arabe',
+        jobs_subtitle: 'Diverses opportunités d\'emploi et carrières',
+        partners_subtitle: 'Nos partenaires dans le succès',
+        btn_view: 'Aperçu',
+        btn_download: 'Télécharger',
+        footer_desc: 'Votre bibliothèque numérique pour livres, romans et histoires',
+        footer_rights: 'Tous droits réservés.',
+        footer_credits: 'Coordinatrice d\'accès: Sidra Al-Mulla Ali | Développement: Nabil Al-Humaid'
+    }
+};
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+
+            // Optional: Reset custom background when switching themes to ensure readability
+            // document.documentElement.style.removeProperty('--bg-primary');
+            // localStorage.removeItem('custom-bg-color');
+            // reload color picker value
+            // const picker = document.getElementById('bg-color-picker');
+            // if(picker) picker.value = newTheme === 'light' ? '#f4f7f6' : '#0f0f23';
+        });
+    }
+}
+
+function initColorPicker() {
+    const picker = document.getElementById('bg-color-picker');
+    if (!picker) return;
+
+    // Load saved color
+    const savedColor = localStorage.getItem('custom-bg-color');
+    if (savedColor) {
+        document.documentElement.style.setProperty('--bg-primary', savedColor);
+        picker.value = savedColor;
+    } else {
+        // Set default value based on current theme
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        picker.value = currentTheme === 'light' ? '#f4f7f6' : '#0f0f23';
+    }
+
+    picker.addEventListener('input', (e) => {
+        const color = e.target.value;
+        document.documentElement.style.setProperty('--bg-primary', color);
+        localStorage.setItem('custom-bg-color', color);
+    });
+}
+
+function updateThemeIcon(theme) {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'light') {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        } else {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    }
+}
+
+function updateLanguage(lang) {
+    // Save preference
+    localStorage.setItem('lang', lang);
+
+    // Update direction
+    const dir = lang === 'en' || lang === 'fr' ? 'ltr' : 'rtl';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = dir;
+
+    // Update translations
+    const translations = TRANSLATIONS[lang];
+    if (!translations) return;
+
+    // 1. Elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[key]) {
+            el.textContent = translations[key];
+        }
+    });
+
+    // 2. Elements with data-i18n-placeholder (inputs)
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[key]) {
+            el.placeholder = translations[key];
+        }
+    });
+
+    // 3. Update active language button text/icon if needed
+    const btnSpan = document.querySelector('.lang-btn span');
+    const langNames = {
+        ar: 'عربي',
+        en: 'English',
+        ku: 'Kurdî',
+        fr: 'Français'
+    };
+    if (btnSpan) btnSpan.textContent = langNames[lang];
+}
+
+function initLanguage() {
+    const savedLang = localStorage.getItem('lang') || 'ar';
+    updateLanguage(savedLang);
+
+    const langLinks = document.querySelectorAll('.lang-menu a');
+    langLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = link.getAttribute('data-lang');
+            updateLanguage(lang);
+        });
+    });
+}
+
+// ===========================================
 // Event Listeners
 // ===========================================
 
+// ===========================================
+// Search Button Effect
+// ===========================================
+
+/**
+ * Initialize playful search button effect
+ */
+function initSearchButtonEffect() {
+    const btn = DOM.searchBtn;
+    const input = DOM.searchInput;
+
+    if (!btn || !input) return;
+
+    btn.addEventListener('mouseover', () => {
+        const query = input.value.trim();
+
+        // Only run away if input is empty
+        if (query === '') {
+            // Calculate random relative position
+            // Limits: X between -150 and 150, Y between -50 and 50
+            const randomX = Math.floor(Math.random() * 300) - 150;
+            const randomY = Math.floor(Math.random() * 100) - 50;
+            const randomRotate = Math.floor(Math.random() * 20) - 10;
+
+            btn.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+
+            // Change color to indicate it's "locked" or "shy"
+            btn.style.background = 'var(--text-muted)';
+            btn.style.cursor = 'not-allowed';
+            // Add a fun transition
+            btn.style.transition = 'all 0.3s ease-out';
+        }
+    });
+
+    input.addEventListener('input', () => {
+        if (input.value.trim() !== '') {
+            // Reset position and style
+            btn.style.transform = 'translate(0, 0) rotate(0deg)';
+            btn.style.background = 'var(--primary-gradient)';
+            btn.style.cursor = 'pointer';
+        }
+    });
+}
+
+/**
+ * Initialize Book Interactions (Animate on Click)
+ */
+function initBookInteractions() {
+    const books = document.querySelectorAll('.book');
+    const TIMEOUT_DURATION = 15000; // 15 seconds
+
+    books.forEach(book => {
+        let timeoutId;
+
+        book.style.cursor = 'pointer'; // Make it obvious clickable
+
+        book.addEventListener('click', () => {
+            // Add active class to start animation
+            book.classList.add('active');
+
+            // Clear existing timeout if mapped
+            if (book.dataset.timeoutId) {
+                clearTimeout(parseInt(book.dataset.timeoutId));
+            }
+
+            // Set new timeout to reset
+            timeoutId = setTimeout(() => {
+                book.classList.remove('active');
+            }, TIMEOUT_DURATION);
+
+            // Store timeout ID to handle multiple clicks
+            book.dataset.timeoutId = timeoutId;
+        });
+    });
+}
+
 function initEventListeners() {
+    // Initialize Theme & Language
+    initTheme();
+    initLanguage();
+    initColorPicker();
+
+    // Initialize Search Button Effect
+    initSearchButtonEffect();
+
+    // Initialize Book Interactions
+    initBookInteractions();
+
     // Navigation toggle
     DOM.navToggle?.addEventListener('click', toggleMobileMenu);
 

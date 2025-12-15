@@ -197,6 +197,31 @@
                         <label for="file-input">اختر الملف (يفضل PDF أو صور)</label>
                         <input type="file" id="file-input" class="form-control" required>
                     </div>
+
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label style="display: flex; align-items: start; gap: 10px; cursor: pointer;">
+                            <input type="checkbox" id="has-custom-cover" style="width: auto; margin-top: 5px;">
+                            <div>
+                                <span style="font-weight: 600;">تخصيص صورة الغلاف (اختياري)</span>
+                                <small
+                                    style="color: var(--text-secondary); display: block; margin-top: 5px; font-weight: normal;">
+                                    الافتراضي: سيتم استخدام الصورة المصغرة للملف الأساسي (مثل الصفحة الأولى من PDF)
+                                    كغلاف.
+                                    <br>
+                                    قم بتفعيل هذا الخيار <b>فقط</b> إذا كان الملف لا يحتوي على غلاف، أو إذا كنت تريد
+                                    استبداله بصورة أخرى.
+                                </small>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="cover-upload-group" style="display: none; animation: fadeIn 0.3s;">
+                        <label for="cover-input">
+                            <i class="fas fa-image"></i>
+                            صورة الغلاف البديلة
+                        </label>
+                        <input type="file" id="cover-input" class="form-control" accept="image/*">
+                    </div>
                     <div class="form-group">
                         <label for="file-description">وصف الملف / المبادرة (اختياري)</label>
                         <input type="text" id="file-description" class="form-control"

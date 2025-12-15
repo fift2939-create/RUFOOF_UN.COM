@@ -193,14 +193,37 @@ function init() {
 /**
  * Handle File Upload
  */
+
+
+// Handle checkbox toggle for cover upload
+document.getElementById('has-custom-cover').addEventListener('change', function (e) {
+    const coverGroup = document.getElementById('cover-upload-group');
+    if (e.target.checked) {
+        coverGroup.style.display = 'block';
+    } else {
+        coverGroup.style.display = 'none';
+        document.getElementById('cover-input').value = ''; // Clear selection
+    }
+});
+
+/**
+ * Handle File Upload (Updated for Cover)
+ */
 async function handleUpload(e) {
     e.preventDefault();
 
     const file = ELEMENTS.fileInput.files[0];
     const category = ELEMENTS.uploadCategory.value;
+    const hasCustomCover = document.getElementById('has-custom-cover').checked;
+    const coverFile = hasCustomCover ? document.getElementById('cover-input').files[0] : null;
 
     if (!file) {
         alert('الرجاء اختيار ملف للرفع');
+        return;
+    }
+
+    if (hasCustomCover && !coverFile) {
+        alert('الرجاء اختيار صورة الغلاف');
         return;
     }
 
@@ -211,9 +234,14 @@ async function handleUpload(e) {
 
     // Update UI
     ELEMENTS.uploadStatus.style.display = 'block';
+    ELEMENTS.uploadStatus.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الرفع... يرجى الانتظار';
 
     try {
         const base64Data = await readFileAsBase64(file);
+        let base64Cover = null;
+        if (coverFile) {
+            base64Cover = await readFileAsBase64(coverFile);
+        }
 
         const payload = {
             action: 'upload',
@@ -221,7 +249,11 @@ async function handleUpload(e) {
             name: file.name,
             description: ELEMENTS.fileDescriptionInput.value.trim(),
             mimeType: file.type,
-            data: base64Data
+            data: base64Data,
+            hasCustomCover: hasCustomCover,
+            coverName: coverFile ? coverFile.name : null,
+            coverMimeType: coverFile ? coverFile.type : null,
+            coverData: base64Cover
         };
 
         // Send to Apps Script
@@ -239,6 +271,8 @@ async function handleUpload(e) {
         if (result.status === 'success') {
             alert('تم رفع الملف بنجاح!');
             ELEMENTS.uploadForm.reset();
+            document.getElementById('has-custom-cover').checked = false;
+            document.getElementById('cover-upload-group').style.display = 'none';
         } else {
             throw new Error(result.message || 'فشل الرفع');
         }

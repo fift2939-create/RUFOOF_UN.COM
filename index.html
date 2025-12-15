@@ -19,7 +19,8 @@
     <!-- Loader -->
     <div class="loader-container" id="loader">
         <div class="loader">
-            <i class="fas fa-book-open"></i>
+            <img src="https://th.bing.com/th/id/OIP.KT1FR5hRdIw9uJ54Jl7-sgHaEW?w=306&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                alt="Rofof Logo">
             <span>رفوف</span>
         </div>
     </div>
@@ -28,7 +29,8 @@
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="nav-logo">
-                <i class="fas fa-book-reader"></i>
+                <img src="https://th.bing.com/th/id/OIP.KT1FR5hRdIw9uJ54Jl7-sgHaEW?w=306&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                    alt="Rofof Logo">
                 <span>رفوف</span>
             </a>
 
@@ -36,40 +38,64 @@
                 <li class="nav-item">
                     <a href="#home" class="nav-link active">
                         <i class="fas fa-home"></i>
-                        الرئيسية
+                        <span data-i18n="nav_home"></span>الرئيسية</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#novels" class="nav-link">
                         <i class="fas fa-book"></i>
-                        الروايات
+                        <span data-i18n="nav_novels">الروايات</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#stories" class="nav-link">
                         <i class="fas fa-feather-alt"></i>
-                        القصص
+                        <span data-i18n="nav_stories">القصص</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#initiatives" class="nav-link">
                         <i class="fas fa-rocket"></i>
-                        المبادرات
+                        <span data-i18n="nav_initiatives">المبادرات</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#jobs" class="nav-link">
                         <i class="fas fa-briefcase"></i>
-                        الوظائف
+                        <span data-i18n="nav_jobs">الوظائف</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#partners" class="nav-link">
                         <i class="fas fa-handshake"></i>
-                        الشركاء
+                        <span data-i18n="nav_partners">الشركاء</span>
                     </a>
                 </li>
             </ul>
+
+            <div class="nav-controls">
+                <div class="lang-dropdown">
+                    <button class="lang-btn">
+                        <i class="fas fa-globe"></i>
+                        <span>عربي</span>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" data-lang="ar">العربية</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ku">Kurdî</a>
+                        <a href="#" data-lang="fr">Français</a>
+                    </div>
+                </div>
+                <div class="color-picker-container" title="تغيير لون الخلفية">
+                    <input type="color" id="bg-color-picker">
+                    <label for="bg-color-picker" class="color-picker-btn">
+                        <i class="fas fa-palette"></i>
+                    </label>
+                </div>
+                <button class="theme-btn" id="theme-toggle" title="تبديل المظهر">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
 
             <div class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
@@ -83,11 +109,11 @@
         <div class="container hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="highlight">رفوف</span>
+                    <span class="highlight" data-i18n="logo_name">رفوف</span>
                     <br>
-                    مكتبتك الرقمية
+                    <span data-i18n="hero_subtitle">مكتبتك الرقمية</span>
                 </h1>
-                <p class="hero-description">
+                <p class="hero-description" data-i18n="hero_desc">
                     اكتشف عالماً من الكتب والروايات والقصص. مكتبة رقمية متكاملة تضم أفضل المحتوى العربي في مكان واحد.
                 </p>
 
@@ -95,8 +121,8 @@
                 <div class="search-box">
                     <i class="fas fa-search search-icon"></i>
                     <input type="text" id="search-input" class="search-input"
-                        placeholder="ابحث عن كتاب، رواية، أو قصة...">
-                    <button class="search-btn" id="search-btn">
+                        placeholder="ابحث عن كتاب، رواية، أو قصة..." data-i18n-placeholder="search_placeholder">
+                    <button class="search-btn" id="search-btn" data-i18n="search_btn">
                         بحث
                     </button>
                 </div>
@@ -105,25 +131,34 @@
                     <div class="stat">
                         <i class="fas fa-book"></i>
                         <span class="stat-number" id="total-books">0</span>
-                        <span class="stat-label">كتاب</span>
+                        <span class="stat-label" data-i18n="stat_books">كتاب</span>
                     </div>
                     <div class="stat">
                         <i class="fas fa-folder"></i>
                         <span class="stat-number">5</span>
-                        <span class="stat-label">أقسام</span>
+                        <span class="stat-label" data-i18n="stat_sections">أقسام</span>
                     </div>
                     <div class="stat">
                         <i class="fas fa-users"></i>
                         <span class="stat-number" id="total-visitors">0</span>
-                        <span class="stat-label">زائر</span>
+                        <span class="stat-label" data-i18n="stat_visitors">زائر</span>
                     </div>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="floating-books">
-                    <div class="book book-1"><i class="fas fa-book"></i></div>
-                    <div class="book book-2"><i class="fas fa-book-open"></i></div>
-                    <div class="book book-3"><i class="fas fa-bookmark"></i></div>
+                    <div class="book book-1">
+                        <img src="https://th.bing.com/th/id/OIP.sbwU1XaNN2l2RFEtzV3shQHaEv?w=276&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                            alt="Book 1">
+                    </div>
+                    <div class="book book-2">
+                        <img src="https://th.bing.com/th/id/OIP.rhLqgZiRWEdihNfOULtmeAHaHa?w=176&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                            alt="Book 2">
+                    </div>
+                    <div class="book book-3">
+                        <img src="https://th.bing.com/th/id/OIP.67Br6jkj9uaBx4qLjXoqrwHaHa?w=130&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                            alt="Book 3">
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,35 +179,35 @@
                     <div class="category-icon">
                         <i class="fas fa-book"></i>
                     </div>
-                    <h3>الروايات</h3>
+                    <h3 data-i18n="nav_novels">الروايات</h3>
                     <span class="category-count" id="novels-count">0</span>
                 </a>
                 <a href="#stories" class="category-card" data-category="stories">
                     <div class="category-icon">
                         <i class="fas fa-feather-alt"></i>
                     </div>
-                    <h3>القصص</h3>
+                    <h3 data-i18n="nav_stories">القصص</h3>
                     <span class="category-count" id="stories-count">0</span>
                 </a>
                 <a href="#initiatives" class="category-card" data-category="initiatives">
                     <div class="category-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
-                    <h3>المبادرات الشبابية</h3>
+                    <h3 data-i18n="nav_initiatives">المبادرات الشبابية</h3>
                     <span class="category-count" id="initiatives-count">0</span>
                 </a>
                 <a href="#jobs" class="category-card" data-category="jobs">
                     <div class="category-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3>الوظائف</h3>
+                    <h3 data-i18n="nav_jobs">الوظائف</h3>
                     <span class="category-count" id="jobs-count">0</span>
                 </a>
                 <a href="#partners" class="category-card" data-category="partners">
                     <div class="category-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>الشركاء</h3>
+                    <h3 data-i18n="nav_partners">الشركاء</h3>
                     <span class="category-count" id="partners-count">0</span>
                 </a>
             </div>
@@ -185,9 +220,10 @@
             <div class="section-header">
                 <div class="section-title">
                     <i class="fas fa-book"></i>
-                    <h2>الروايات</h2>
+                    <h2 data-i18n="nav_novels">الروايات</h2>
                 </div>
-                <p class="section-subtitle">استمتع بقراءة أفضل الروايات العربية والعالمية</p>
+                <p class="section-subtitle" data-i18n="novels_subtitle">استمتع بقراءة أفضل الروايات العربية والعالمية
+                </p>
             </div>
             <div class="books-grid" id="novels-grid">
                 <div class="loading-placeholder">
@@ -204,9 +240,9 @@
             <div class="section-header">
                 <div class="section-title">
                     <i class="fas fa-feather-alt"></i>
-                    <h2>القصص</h2>
+                    <h2 data-i18n="nav_stories">القصص</h2>
                 </div>
-                <p class="section-subtitle">مجموعة منتقاة من القصص القصيرة والطويلة</p>
+                <p class="section-subtitle" data-i18n="stories_subtitle">مجموعة منتقاة من القصص القصيرة والطويلة</p>
             </div>
             <div class="books-grid" id="stories-grid">
                 <div class="loading-placeholder">
@@ -223,9 +259,9 @@
             <div class="section-header">
                 <div class="section-title">
                     <i class="fas fa-rocket"></i>
-                    <h2>المبادرات الشبابية</h2>
+                    <h2 data-i18n="nav_initiatives">المبادرات الشبابية</h2>
                 </div>
-                <p class="section-subtitle">مبادرات ملهمة من الشباب العربي</p>
+                <p class="section-subtitle" data-i18n="initiatives_subtitle">مبادرات ملهمة من الشباب العربي</p>
             </div>
             <div class="books-grid" id="initiatives-grid">
                 <div class="loading-placeholder">
@@ -242,9 +278,9 @@
             <div class="section-header">
                 <div class="section-title">
                     <i class="fas fa-briefcase"></i>
-                    <h2>الوظائف</h2>
+                    <h2 data-i18n="nav_jobs">الوظائف</h2>
                 </div>
-                <p class="section-subtitle">فرص عمل ووظائف متنوعة</p>
+                <p class="section-subtitle" data-i18n="jobs_subtitle">فرص عمل ووظائف متنوعة</p>
             </div>
             <div class="books-grid" id="jobs-grid">
                 <div class="loading-placeholder">
@@ -261,9 +297,9 @@
             <div class="section-header">
                 <div class="section-title">
                     <i class="fas fa-handshake"></i>
-                    <h2>الشركاء</h2>
+                    <h2 data-i18n="nav_partners">الشركاء</h2>
                 </div>
-                <p class="section-subtitle">شركاؤنا في النجاح</p>
+                <p class="section-subtitle" data-i18n="partners_subtitle">شركاؤنا في النجاح</p>
             </div>
             <div class="partners-grid" id="partners-grid">
                 <div class="loading-placeholder">
@@ -290,11 +326,11 @@
                 <div class="modal-actions">
                     <a href="#" class="btn btn-primary" id="modal-view" target="_blank">
                         <i class="fas fa-eye"></i>
-                        معاينة
+                        <span data-i18n="btn_view">معاينة</span>
                     </a>
                     <a href="#" class="btn btn-secondary" id="modal-download" target="_blank">
                         <i class="fas fa-download"></i>
-                        تحميل
+                        <span data-i18n="btn_download">تحميل</span>
                     </a>
                 </div>
             </div>
@@ -340,10 +376,11 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
-                        <i class="fas fa-book-reader"></i>
-                        <span>رفوف</span>
+                        <img src="https://th.bing.com/th/id/OIP.KT1FR5hRdIw9uJ54Jl7-sgHaEW?w=306&h=180&c=7&r=0&o=7&pid=1.7&rm=3"
+                            alt="Rofof Logo">
+                        <span data-i18n="logo_name">رفوف</span>
                     </a>
-                    <p>مكتبتك الرقمية للكتب والروايات والقصص</p>
+                    <p data-i18n="footer_desc">مكتبتك الرقمية للكتب والروايات والقصص</p>
                 </div>
                 <div class="footer-links">
                     <h4>روابط سريعة</h4>
@@ -372,8 +409,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 رفوف. جميع الحقوق محفوظة.</p>
-                <p>إعداد منسقة الوصول: أ. سدره الملا علي | تنفيذ: أ. نبيل الحميد</p>
+                <p>© 2025 <span data-i18n="logo_name">رفوف</span>. <span data-i18n="footer_rights">جميع الحقوق
+                        محفوظة.</span></p>
+                <p data-i18n="footer_credits">إعداد منسقة الوصول: أ. سدره الملا علي | تنفيذ: أ. نبيل الحميد</p>
                 <a href="settings.html" style="color: inherit; text-decoration: none; font-size: 0.8em; opacity: 0.5;"
                     title="لوحة التحكم">
                     <i class="fas fa-cog"></i>
